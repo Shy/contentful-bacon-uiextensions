@@ -9,4 +9,4 @@ This extension hits the [BaconIpsum API](http://baconipsum.com/) and uses it to 
 
 The extension lets you select how many paragraphs to generate and if the created text should start with `Bacon ipsum dolor sit amet`.
 
-You can install this extennsionn via the [Contentful Comand line tool]() or by utilizing the inbrowser [UI extensionn innstaller]().
+You can install this extension via the [Contentful Comand line tool]() or by utilizing the inbrowser [UI extensionn installer]().
