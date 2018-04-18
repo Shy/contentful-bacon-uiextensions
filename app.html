@@ -39,7 +39,14 @@
         window.contentfulExtension.init(function (api) {
             api.window.startAutoResizer();
             var value = api.field.getValue();
-            $("#bacon_text").val(value);
+
+            var baconTextBox = $("#bacon_text");
+            var numberOfParagraphsBox = $("#numberOfParagraphs");
+            var baconErrorTextBox = $("#baconErrorText");
+            var startWithLoremBox = $("#startWithLorem");
+
+
+            baconTextBox.val(value);
 
             var baconUri = "https://baconipsum.com/api/?type=meat-and-filler&format=text";
             var para = "&paras=";
@@ -54,30 +61,30 @@
                     constructedUri = baconUri + para + numberOfParagraphs + startWithLorem + startWithLoremStatus;
 
                     $.get( constructedUri, function( data ) {
-                        $("#bacon_text").val(data);
+                        baconTextBox.val(data);
                         api.field.setValue(data);
-                        $("#bacon_text").attr('aria-invalid', 'false');
-                        $("#numberOfParagraphs").attr('aria-invalid', 'false');
-                        $("#baconErrorText").hide();
+                        baconTextBox.attr('aria-invalid', 'false');
+                        numberOfParagraphsBox.attr('aria-invalid', 'false');
+                        baconErrorTextBox.hide();
                      })
                     .fail(function() {
-                        $("#bacon_text").attr('aria-invalid', 'true');
-                        $("#numberOfParagraphs").attr('aria-invalid', 'true');
-                        $("#baconErrorText").show();
+                        baconTextBox.attr('aria-invalid', 'true');
+                        numberOfParagraphsBox.attr('aria-invalid', 'true');
+                        baconErrorTextBox.show();
                     });
 
                 });
             });
 
-            $("#bacon_text").on("input", function () {
+            baconTextBox.on("input", function () {
                 api.field.setValue(this.value);
             })
 
-            $("#numberOfParagraphs").on("input", function () {
+            numberOfParagraphsBox.on("input", function () {
                 numberOfParagraphs = this.value;
             })
 
-            $("#startWithLorem").on("input", function () {
+            startWithLoremBox.on("input", function () {
                 if (startWithLoremStatus == 0 ){
                     startWithLoremStatus =1;
                 }else{
